@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,6 @@ namespace ActionManager.DAL.Repositories.Abstract.DataBaseMCSQLActionManager
 
         void Update(T entity);
 
-        List<T> GetAll();
+        List<T> GetList();
     }
 }

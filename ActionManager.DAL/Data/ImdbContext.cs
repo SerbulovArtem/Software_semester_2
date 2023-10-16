@@ -2,6 +2,7 @@
 using DAL.Data.Startup;
 using Microsoft.EntityFrameworkCore;
 using System;
+using static System.Collections.Specialized.BitVector32;
 
 namespace ActionManager.DAL.Data;
 
@@ -51,37 +52,4 @@ public partial class ImdbContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
-    public void CreateTblAction(TblAction tblAction)
-    {
-        TblActions.Add(tblAction);
-        SaveChanges();
-    }
-
-    public void DeleteTblAction(TblAction tblAction)
-    {
-        TblActions.Remove(tblAction);
-        SaveChanges();
-    }
-
-    public void UpdateTblAction(int actionId, decimal discountPercentage, int typeactionid)
-    {
-        var typeaction = TblTypeActions.Find(typeactionid);
-        var action = TblActions.Find(actionId);
-
-        if (action != null)
-        {
-            action.DiscountPercentage = discountPercentage;
-            action.TypeActionId = typeactionid;
-            action.TypeAction = typeaction;
-            action.UpdateTime = DateTime.Now;
-
-            Entry(action).State = EntityState.Modified;
-            SaveChanges();
-        }
-        else
-        {
-            throw new Exception();
-        }
-    }
 }

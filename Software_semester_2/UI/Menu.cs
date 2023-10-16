@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using ActionManager.DAL.Repositories.Concreate.DataBaseMCSQLActionManager;
+using ActionManager.DAL.Repositories.Abstract.DataBaseMCSQLActionManager;
 
 
 namespace ActionManager.Admin.UI
@@ -11,12 +13,14 @@ namespace ActionManager.Admin.UI
     class Menu
     {
         private ImdbContext _context;
+        private ActionManagerActionsRepository _actionsRepository;
         private string username;
         private string password;
 
         public Menu()
         {
             _context = new ImdbContext(1);
+            _actionsRepository = new ActionManagerActionsRepository(_context);
 
             while (Authentication()) { }
         }
@@ -134,7 +138,7 @@ namespace ActionManager.Admin.UI
 
         public void PrintAllActions()
         {
-            foreach (var action in _context.TblActions.Include(a => a.Product).Include(t => t.TypeAction))
+            foreach (var action in _actionsRepository.GetDbSet().Include(a => a.Product).Include(t => t.TypeAction))
             {
                 Console.WriteLine($"Action ID: {action.ActionId}, Product Name: {action.Product.ProductName}, Discount Percentage: {action.DiscountPercentage}, Type Action Name: {action.TypeAction.TypeActionName}\n");
             }
@@ -142,7 +146,7 @@ namespace ActionManager.Admin.UI
 
         public void PrintPastActions()
         {
-            foreach (var action in _context.TblActions.Include(a => a.Product).Include(t => t.TypeAction))
+            foreach (var action in _actionsRepository.GetDbSet().Include(a => a.Product).Include(t => t.TypeAction))
             {
                 if (action.TypeActionId == 1) {
                     Console.WriteLine($"Action ID: {action.ActionId}, Product Name: {action.Product.ProductName}, Discount Percentage: {action.DiscountPercentage}\n");
@@ -152,7 +156,7 @@ namespace ActionManager.Admin.UI
 
         public void PrintPresentActions()
         {
-            foreach (var action in _context.TblActions.Include(a => a.Product).Include(t => t.TypeAction))
+            foreach (var action in _actionsRepository.GetDbSet().Include(a => a.Product).Include(t => t.TypeAction))
             {
                 if (action.TypeActionId == 2)
                 {
@@ -163,7 +167,7 @@ namespace ActionManager.Admin.UI
 
         public void PrintFututreActions()
         {
-            foreach (var action in _context.TblActions.Include(a => a.Product).Include(t => t.TypeAction))
+            foreach (var action in _actionsRepository.GetDbSet().Include(a => a.Product).Include(t => t.TypeAction))
             {
                 if (action.TypeActionId == 3)
                 {
@@ -192,7 +196,7 @@ namespace ActionManager.Admin.UI
                     InsertTime = DateTime.Now,
                     UpdateTime = DateTime.Now
                 };
-                _context.CreateTblAction(action);
+                _actionsRepository.Create(action);
             }
             else
             {
@@ -209,8 +213,24 @@ namespace ActionManager.Admin.UI
             int actionId = Convert.ToInt32(input[0]);
             decimal discountPercentage = Convert.ToDecimal(input[1]);
             int typeactionid = Convert.ToInt32(input[2]);
-            
-            _context.UpdateTblAction(actionId, discountPercentage, typeactionid);
+
+            var typeaction = _context.TblTypeActions.Find(typeactionid);
+            var action = _context.TblActions.Find(actionId);
+
+            if (action != null)
+            {
+                action.DiscountPercentage = discountPercentage;
+                action.TypeActionId = typeactionid;
+                action.TypeAction = typeaction;
+                action.UpdateTime = DateTime.Now;
+
+                _actionsRepository.Update(action);
+            }
+            else
+            {
+                Console.WriteLine("This product name doesn't exist, try again");
+                return;
+            }
             Console.WriteLine("Action Updated");
         }
 
@@ -218,11 +238,8 @@ namespace ActionManager.Admin.UI
         {
             Console.WriteLine("Enter Action Id");
             var actionId = Convert.ToInt32(Console.ReadLine());
-            var action = new TblAction()
-            {
-                ActionId = actionId
-            };
-            _context.DeleteTblAction(action);
+            var action = _context.TblActions.Find(actionId);
+            _actionsRepository.Delete(action);
             Console.WriteLine("Action Deleted");
         }
     }

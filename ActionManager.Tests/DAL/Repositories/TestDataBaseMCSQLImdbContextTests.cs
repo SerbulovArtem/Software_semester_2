@@ -1,7 +1,8 @@
-using ActionManager.DAL.Repositories.Concreate.DataBaseMCSQL;
+using ActionManager.DAL.Repositories.Concreate;
 using ActionManager.DTO;
 using Microsoft.EntityFrameworkCore;
 using System;
+using ActionManager.DAL.Data;
 
 namespace ActionManager.Tests.DAL.Repositories
 {
@@ -11,6 +12,7 @@ namespace ActionManager.Tests.DAL.Repositories
         public void TestCreatedAction_ReturnsCreatedAction()
         {
             var context = new ImdbContext(0);
+            var actionrep = new ActionManagerActionsRepository(context);
 
             var product = context.TblProducts.SingleOrDefault(p => p.ProductName == "Milk");
             var typeaction = context.TblTypeActions.Find(2);
@@ -24,10 +26,9 @@ namespace ActionManager.Tests.DAL.Repositories
                 UpdateTime = DateTime.Now
             };
 
-            context.CreateTblAction(actionCreated);
+            actionrep.Create(actionCreated);
 
             var actualAction = context.TblActions.ToList()[context.TblActions.Count() - 1];
-
 
             Assert.That(actualAction, Is.EqualTo(actionCreated));
         }
@@ -36,6 +37,7 @@ namespace ActionManager.Tests.DAL.Repositories
         public void TestDeletedAction_ReturnsNone()
         {
             var context = new ImdbContext(0);
+            var actionrep = new ActionManagerActionsRepository(context);
 
             var product = context.TblProducts.SingleOrDefault(p => p.ProductName == "Milk");
             var typeaction = context.TblTypeActions.Find(2);
@@ -49,9 +51,9 @@ namespace ActionManager.Tests.DAL.Repositories
                 UpdateTime = DateTime.Now
             };
 
-            context.CreateTblAction(actionCreated);
+            actionrep.Create(actionCreated);
 
-            context.DeleteTblAction(actionCreated);
+            actionrep.Delete(actionCreated);
 
             var actualAction = context.TblActions.Find(actionCreated.ActionId);
 
@@ -63,6 +65,7 @@ namespace ActionManager.Tests.DAL.Repositories
         public void TestUpdatedAction_ReturnsUpdatedAction()
         {
             var context = new ImdbContext(0);
+            var actionrep = new ActionManagerActionsRepository(context);
 
             var product = context.TblProducts.SingleOrDefault(p => p.ProductName == "Milk");
             var typeaction = context.TblTypeActions.Find(2);
@@ -76,9 +79,9 @@ namespace ActionManager.Tests.DAL.Repositories
                 UpdateTime = DateTime.Now
             };
 
-            context.CreateTblAction(actionCreated);
+            actionrep.Create(actionCreated);
 
-            context.UpdateTblAction(actionCreated.ActionId, Convert.ToDecimal(15.00), actionCreated.TypeActionId);
+            actionrep.Update(actionCreated);
             var actionUpdated = context.TblActions.ToList().Last();
 
             Assert.That(actionCreated, Is.EqualTo(actionUpdated));
