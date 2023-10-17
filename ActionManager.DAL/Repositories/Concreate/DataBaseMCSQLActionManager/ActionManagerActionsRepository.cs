@@ -45,10 +45,5 @@ namespace ActionManager.DAL.Repositories.Concreate.DataBaseMCSQLActionManager
             _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
         }
-
-        public void Dispose()
-        {
-            _context.Dispose();
-        }
     }
 }

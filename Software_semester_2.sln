@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActionManager.Admin", "Software_semester_2\ActionManager.Admin.csproj", "{FBEB34B7-1E6F-4D91-B4F3-FDE9D7D3AB02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionManager.Admin", "Software_semester_2\ActionManager.Admin.csproj", "{FBEB34B7-1E6F-4D91-B4F3-FDE9D7D3AB02}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActionManager.DAL", "ActionManager.DAL\ActionManager.DAL.csproj", "{6BF6709C-7118-4F27-9BC4-26183128D675}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionManager.DAL", "ActionManager.DAL\ActionManager.DAL.csproj", "{6BF6709C-7118-4F27-9BC4-26183128D675}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActionManager.DTO", "ActionManager.DTO\ActionManager.DTO.csproj", "{87FEE23D-5B73-4667-91F9-48A2BD963A5D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionManager.DTO", "ActionManager.DTO\ActionManager.DTO.csproj", "{87FEE23D-5B73-4667-91F9-48A2BD963A5D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActionManager.Tests", "ActionManager.Tests\ActionManager.Tests.csproj", "{4BBE8B6A-0CA7-4C5A-84D5-81DEBD94B19A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionManager.Tests", "ActionManager.Tests\ActionManager.Tests.csproj", "{4BBE8B6A-0CA7-4C5A-84D5-81DEBD94B19A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

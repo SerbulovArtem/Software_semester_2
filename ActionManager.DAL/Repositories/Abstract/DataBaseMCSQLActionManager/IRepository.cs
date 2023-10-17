@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ActionManager.DAL.Repositories.Abstract.DataBaseMCSQLActionManager
 {
-    public interface IRepository<T> : IDisposable
+    public interface IRepository<T>
     {
         void Create(T entity);
 
