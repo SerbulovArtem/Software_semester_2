@@ -15,7 +15,7 @@ namespace DAL.Data.Startup
         public static string GetConnectionString(int type)
         {
             var builder = new ConfigurationBuilder();
-            builder.AddJsonFile("D:\\University\\Software_5_semester\\Action_Manager\\Data\\appsettings.json");
+            builder.AddJsonFile("D:\\University\\Software_semester_2\\ActionManager.DAL\\Data\\appsettings.json");
             var configuration = builder.Build();
             string database = "";
             if (type == 1)
