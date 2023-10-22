@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="D:\University\Software_semester_2\ActionManager.Admin\UI\Menu.cs" Link="Menu.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
       <PrivateAssets>all</PrivateAssets>
@@ -28,10 +24,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ActionManager.DAL\ActionManager.DAL.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="UI\" />
   </ItemGroup>
 
 </Project>
