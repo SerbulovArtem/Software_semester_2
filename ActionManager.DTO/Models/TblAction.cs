@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 namespace ActionManager.DTO;
 
 [Table("tblActions")]
+[Index("ProductId", Name = "IX_tblActions_product_id")]
+[Index("TypeActionId", Name = "IX_tblActions_type_action_id")]
 public partial class TblAction
 {
     [Key]

@@ -12,8 +12,8 @@ namespace ActionManager.DAL.Repositories.Concreate.DataBaseMCSQLActionManager
 {
     public class ActionManagerActionsRepository : IActionsRepository
     {
-        private ImdbContext _context;
-        public ActionManagerActionsRepository(ImdbContext context) 
+        private ActionManagerContext _context;
+        public ActionManagerActionsRepository(ActionManagerContext context) 
         {
             _context = context;
         }
@@ -37,7 +37,27 @@ namespace ActionManager.DAL.Repositories.Concreate.DataBaseMCSQLActionManager
 
         public List<TblAction> GetList()
         {
-            return _context.TblActions.ToList();
+            return GetDbSet().Include(a => a.Product).Include(a => a.TypeAction).ToList();
+        }
+
+        public List<TblAction> GetPastList()
+        {
+            return GetDbSet().Include(a => a.Product).Include(a => a.TypeAction).Where(a => a.TypeAction.TypeActionId == 1).ToList();
+        }
+
+        public List<TblAction> GetPresentList()
+        {
+            return GetDbSet().Include(a => a.Product).Include(a => a.TypeAction).Where(a => a.TypeAction.TypeActionId == 2).ToList();
+        }
+
+        public List<TblAction> GetFutureList()
+        {
+            return GetDbSet().Include(a => a.Product).Include(a => a.TypeAction).Where(a => a.TypeAction.TypeActionId == 3).ToList();
+        }
+
+        public bool CheckDiscountPercentage(decimal discountpercentage)
+        {
+            return discountpercentage > 0.00m && discountpercentage < 100.00m;
         }
 
         public void Update(TblAction entity)

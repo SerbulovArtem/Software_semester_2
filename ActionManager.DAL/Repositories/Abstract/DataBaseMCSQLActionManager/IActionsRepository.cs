@@ -9,6 +9,12 @@ namespace ActionManager.DAL.Repositories.Abstract.DataBaseMCSQLActionManager
 {
     public interface IActionsRepository : IRepository<TblAction>
     {
+        public List<TblAction> GetPastList();
 
+        public List<TblAction> GetPresentList();
+
+        public List<TblAction> GetFutureList();
+
+        public bool CheckDiscountPercentage(decimal discountpercentage);
     }
 }

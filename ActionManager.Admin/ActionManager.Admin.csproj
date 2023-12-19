@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ActionManager.BLL\ActionManager.BLL.csproj" />
     <ProjectReference Include="..\ActionManager.DAL\ActionManager.DAL.csproj" />
   </ItemGroup>
 

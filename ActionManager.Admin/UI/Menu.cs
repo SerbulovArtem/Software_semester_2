@@ -5,22 +5,25 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using ActionManager.DAL.Repositories.Concreate.DataBaseMCSQLActionManager;
-using ActionManager.DAL.Repositories.Abstract.DataBaseMCSQLActionManager;
+using ActionManager.BLL.Repositories.Concreate.DataBaseMCSQLActionManager;
 
 
 namespace ActionManager.Admin.UI
 {
     class Menu
     {
-        private ImdbContext _context;
+        private ActionManagerContext _context;
         private ActionManagerActionsRepository _actionsRepository;
+        private IUsersRepository _usersRepository;
         private string username;
         private string password;
+        private string salt;
 
         public Menu()
         {
-            _context = new ImdbContext(1);
+            _context = new ActionManagerContext(1);
             _actionsRepository = new ActionManagerActionsRepository(_context);
+            _usersRepository = new ActionManagerUserRepository(_context);
 
             while (Authentication()) { }
         }
@@ -82,6 +85,7 @@ namespace ActionManager.Admin.UI
         {
             username = "";
             password = "";
+            salt = "";
             Console.WriteLine("Select option:\n1. - Login.\n-1. - Exit.");
             string userInput = Console.ReadLine();
             try
@@ -94,6 +98,22 @@ namespace ActionManager.Admin.UI
                         var userInputList = Console.ReadLine()!.Split(' ');
                         username = userInputList[0];
                         password = userInputList[1];
+
+# warning Creating First User
+                        // Create First User
+
+                        /*string salt = _usersRepository.GenerateSalt(username, password);
+                        string hashpassword = _usersRepository.EncryptPassword(password, salt);
+                        bool is_true = _usersRepository.VerifyPassword(password + salt, hashpassword);
+
+                        TblUser user = new TblUser{
+                            Username = username,
+                            Password = hashpassword,
+                            Salt = salt
+                        };
+
+                        _usersRepository.Create(user);*/
+
                         return IsAuthenticated(username, password);
                     case "-1":
                         Console.WriteLine("~~~~~Access terminated~~~~~");
@@ -117,7 +137,7 @@ namespace ActionManager.Admin.UI
             {
                 if (username == user.Username)
                 {
-                    if (password == user.Password)
+                    if (_usersRepository.VerifyPassword(password + user.Salt, user.Password))
                     {
                         Console.WriteLine($"~~~~~Access granted~~~~~" +
                             $"\n~~~~~Welcome {username}~~~~~");

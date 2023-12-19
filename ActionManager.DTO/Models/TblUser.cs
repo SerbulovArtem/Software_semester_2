@@ -11,12 +11,17 @@ public partial class TblUser
 {
     [Key]
     [Column("username")]
-    [StringLength(50)]
+    [StringLength(255)]
     [Unicode(false)]
     public string Username { get; set; } = null!;
 
     [Column("password")]
-    [StringLength(50)]
+    [StringLength(255)]
     [Unicode(false)]
     public string Password { get; set; } = null!;
+
+    [Column("salt")]
+    [StringLength(255)]
+    [Unicode(false)]
+    public string Salt { get; set; } = null!;
 }

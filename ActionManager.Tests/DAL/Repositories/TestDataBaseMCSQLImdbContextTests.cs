@@ -11,7 +11,7 @@ namespace ActionManager.Tests.DAL.Repositories
         [Test]
         public void TestCreatedAction_ReturnsCreatedAction()
         {
-            var context = new ImdbContext(0);
+            var context = new ActionManagerContext(0);
             var actionrep = new ActionManagerActionsRepository(context);
 
             var product = context.TblProducts.SingleOrDefault(p => p.ProductName == "Milk");
@@ -36,7 +36,7 @@ namespace ActionManager.Tests.DAL.Repositories
         [Test]
         public void TestDeletedAction_ReturnsNone()
         {
-            var context = new ImdbContext(0);
+            var context = new ActionManagerContext(0);
             var actionrep = new ActionManagerActionsRepository(context);
 
             var product = context.TblProducts.SingleOrDefault(p => p.ProductName == "Milk");
@@ -64,7 +64,7 @@ namespace ActionManager.Tests.DAL.Repositories
         [Test]
         public void TestUpdatedAction_ReturnsUpdatedAction()
         {
-            var context = new ImdbContext(0);
+            var context = new ActionManagerContext(0);
             var actionrep = new ActionManagerActionsRepository(context);
 
             var product = context.TblProducts.SingleOrDefault(p => p.ProductName == "Milk");

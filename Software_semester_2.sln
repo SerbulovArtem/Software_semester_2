@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionManager.Admin", "ActionManager.Admin\ActionManager.Admin.csproj", "{FBEB34B7-1E6F-4D91-B4F3-FDE9D7D3AB02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActionManager.Admin", "ActionManager.Admin\ActionManager.Admin.csproj", "{FBEB34B7-1E6F-4D91-B4F3-FDE9D7D3AB02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionManager.DAL", "ActionManager.DAL\ActionManager.DAL.csproj", "{6BF6709C-7118-4F27-9BC4-26183128D675}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActionManager.DAL", "ActionManager.DAL\ActionManager.DAL.csproj", "{6BF6709C-7118-4F27-9BC4-26183128D675}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionManager.DTO", "ActionManager.DTO\ActionManager.DTO.csproj", "{87FEE23D-5B73-4667-91F9-48A2BD963A5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActionManager.DTO", "ActionManager.DTO\ActionManager.DTO.csproj", "{87FEE23D-5B73-4667-91F9-48A2BD963A5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionManager.Tests", "ActionManager.Tests\ActionManager.Tests.csproj", "{4BBE8B6A-0CA7-4C5A-84D5-81DEBD94B19A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActionManager.Tests", "ActionManager.Tests\ActionManager.Tests.csproj", "{4BBE8B6A-0CA7-4C5A-84D5-81DEBD94B19A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActionManagerWPF", "ActionManagerWPF\ActionManagerWPF.csproj", "{4CDDDB7D-E6B5-4D29-A080-824A8A4A1827}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionManager.BLL", "ActionManager.BLL\ActionManager.BLL.csproj", "{C4A2877C-1DDD-4C88-A581-DC55E58FEE4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{4BBE8B6A-0CA7-4C5A-84D5-81DEBD94B19A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BBE8B6A-0CA7-4C5A-84D5-81DEBD94B19A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BBE8B6A-0CA7-4C5A-84D5-81DEBD94B19A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CDDDB7D-E6B5-4D29-A080-824A8A4A1827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CDDDB7D-E6B5-4D29-A080-824A8A4A1827}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CDDDB7D-E6B5-4D29-A080-824A8A4A1827}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CDDDB7D-E6B5-4D29-A080-824A8A4A1827}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4A2877C-1DDD-4C88-A581-DC55E58FEE4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4A2877C-1DDD-4C88-A581-DC55E58FEE4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4A2877C-1DDD-4C88-A581-DC55E58FEE4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4A2877C-1DDD-4C88-A581-DC55E58FEE4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

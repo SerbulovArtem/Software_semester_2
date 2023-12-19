@@ -1,20 +1,20 @@
-﻿using ActionManager.DTO;
-using DAL.Data.Startup;
+﻿using System;
+using System.Collections.Generic;
+using ActionManager.DTO;
+using ActionManager.DAL.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using static System.Collections.Specialized.BitVector32;
 
 namespace ActionManager.DAL.Data;
 
-public partial class ImdbContext : DbContext
+public partial class ActionManagerContext : DbContext
 {
     private int _type;
-    public ImdbContext(int type)
+    public ActionManagerContext(int type)
     {
         _type = type;
     }
 
-    public ImdbContext(DbContextOptions<ImdbContext> options)
+    public ActionManagerContext(DbContextOptions<ActionManagerContext> options)
         : base(options)
     {
     }
@@ -28,7 +28,7 @@ public partial class ImdbContext : DbContext
     public virtual DbSet<TblUser> TblUsers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer(Startup.GetConnectionString(_type));
+        => optionsBuilder.UseSqlServer("Data Source=localhost,1433;Initial Catalog=ActionManager;User ID=wintermute;Password=WTNLPARg83655;Integrated Security=False;TrustServerCertificate=True;Encrypt=False;MultipleActiveResultSets=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
