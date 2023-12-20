@@ -41,16 +41,5 @@ namespace WPF.Views
                 };
             }
         }
-
-        private void TypeActions_Click(object sender, RoutedEventArgs e)
-        {
-            optionsPopup.IsOpen = true;
-
-            var button = sender as Button;
-            if (button != null)
-            {
-                optionsPopup.IsOpen = true;
-            }
-        }
     }
 }

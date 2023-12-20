@@ -19,7 +19,6 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Display Product Details -->
@@ -40,28 +39,16 @@
             <TextBlock Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=discountPercentageTextBox}" Foreground="Red" Margin="0,0,0,5"/>
         </StackPanel>
 
-        <!-- Type Action Choose -->
-        <Button x:Name ="TypeActions" Grid.Row="2" Content="Type Actions" Click="TypeActions_Click" VerticalAlignment="Top" Margin="10"/>
-
-        <!-- Popup to display the options -->
-        <Popup Name="optionsPopup" PlacementTarget="{Binding ElementName=TypeActions}" Placement="Bottom" StaysOpen="False">
-            <Border BorderBrush="Black" BorderThickness="1" Background="White">
-                <!-- ListView to display the options -->
-                <ListView Name="optionsListView" SelectionMode="Single" SelectedItem="{Binding SelectedTypeAction, Mode=TwoWay}">
-                    <!-- Define your options here -->
-                    <ListViewItem Content="Past"/>
-                    <ListViewItem Content="Present"/>
-                    <ListViewItem Content="Future"/>
-                    <!-- Add more items as needed -->
-                </ListView>
-            </Border>
-        </Popup>
-
         <!-- Updated TextBox -->
-        <TextBox Text="{Binding SelectedTypeAction, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Margin="10"/>
+        <!-- Updated TextBox with DataTrigger -->
+        <ComboBox Grid.Row = "2" SelectedItem="{Binding SelectedTypeAction}" Width="100">
+            <ComboBoxItem Content="Past"/>
+            <ComboBoxItem Content="Present"/>
+            <ComboBoxItem Content="Future"/>
+        </ComboBox>
 
         <!-- Add to Actions Button -->
-        <Button Grid.Row="4" Content="Submit" Margin="10" Command="{Binding SubmitCommand}" />
+        <Button Grid.Row="3" Content="Submit" Margin="10" Command="{Binding SubmitCommand}" />
 
     </Grid>
 </Window>

@@ -1,0 +1,43 @@
+﻿@model WEB_MVC.Models.CartModel
+
+<h2>Cart Details</h2>
+
+<div>
+    <h4>Cart</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CartId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CartId)
+        </dd>
+
+        <dt>
+            User
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.UserName) (ID: @Html.DisplayFor(model => model.UserId))
+        </dd>
+
+        <dt>
+            Product
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.ProductName) (ID: @Html.DisplayFor(model => model.ProductId))
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <!-- Add other properties as needed -->
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CartId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,4 +1,5 @@
 using ActionManager.DAL.Repositories.Concreate;
+using ActionManager.BLL.Repositories.Concreate.DataBaseMCSQLActionManager;
 using ActionManager.DTO;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -34,6 +35,35 @@ namespace ActionManager.Tests.DAL.Repositories
         }
 
         [Test]
+        public void TestCreatedUser_ReturnsCreatedUser()
+        {
+            var context = new ActionManagerContext(0);
+            var userrep = new ActionManagerUserRepository(context);
+
+            string username = "Artemm";
+            string password = "Serb";
+
+            string salt = userrep.GenerateSalt(username, password);
+            string hashpassword = userrep.EncryptPassword(password, salt);
+            bool is_true = userrep.VerifyPassword(password + salt, hashpassword);
+
+            TblUser userCreated = new TblUser
+            {
+                Username = username,
+                Password = hashpassword,
+                Salt = salt
+            };
+
+            userrep.Create(userCreated);
+
+            var actualUser = context.TblUsers.ToList()[context.TblUsers.Count() - 1];
+
+            userrep.Delete(userCreated);
+
+            Assert.That(userCreated.Username, Is.EqualTo(username));
+        }
+
+        [Test]
         public void TestDeletedAction_ReturnsNone()
         {
             var context = new ActionManagerContext(0);
@@ -59,6 +89,35 @@ namespace ActionManager.Tests.DAL.Repositories
 
 
             Assert.IsTrue(actualAction == null);
+        }
+
+        [Test]
+        public void TestDeletedUser_ReturnsNone()
+        {
+            var context = new ActionManagerContext(0);
+            var userrep = new ActionManagerUserRepository(context);
+
+            string username = "Artemm";
+            string password = "Serb";
+
+            string salt = userrep.GenerateSalt(username, password);
+            string hashpassword = userrep.EncryptPassword(password, salt);
+            bool is_true = userrep.VerifyPassword(password + salt, hashpassword);
+
+            TblUser userCreated = new TblUser
+            {
+                Username = username,
+                Password = hashpassword,
+                Salt = salt
+            };
+
+            userrep.Create(userCreated);
+
+            userrep.Delete(userCreated);
+
+            var actualUser = context.TblUsers.Find(userCreated.Username);
+
+            Assert.IsTrue(actualUser == null);
         }
 
         [Test]

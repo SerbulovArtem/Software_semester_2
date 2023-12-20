@@ -9,6 +9,11 @@ namespace ActionManager.DAL.Data;
 public partial class ActionManagerContext : DbContext
 {
     private int _type;
+
+    public ActionManagerContext()
+    {
+    }
+
     public ActionManagerContext(int type)
     {
         _type = type;

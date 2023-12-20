@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActionManager.Tests", "Acti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActionManagerWPF", "ActionManagerWPF\ActionManagerWPF.csproj", "{4CDDDB7D-E6B5-4D29-A080-824A8A4A1827}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionManager.BLL", "ActionManager.BLL\ActionManager.BLL.csproj", "{C4A2877C-1DDD-4C88-A581-DC55E58FEE4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActionManager.BLL", "ActionManager.BLL\ActionManager.BLL.csproj", "{C4A2877C-1DDD-4C88-A581-DC55E58FEE4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEB-MVC", "WEB-MVC\WEB-MVC.csproj", "{D2FEBE67-FA66-4768-94DA-994857D4849E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{C4A2877C-1DDD-4C88-A581-DC55E58FEE4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4A2877C-1DDD-4C88-A581-DC55E58FEE4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4A2877C-1DDD-4C88-A581-DC55E58FEE4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2FEBE67-FA66-4768-94DA-994857D4849E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2FEBE67-FA66-4768-94DA-994857D4849E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2FEBE67-FA66-4768-94DA-994857D4849E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2FEBE67-FA66-4768-94DA-994857D4849E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

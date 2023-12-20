@@ -1,0 +1,39 @@
+﻿@model List<WEB_MVC.Models.CartModel>
+
+<h2>Cart Index</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>CartId</th>
+            <th>User</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>InsertTime</th>
+            <th>UpdateTime</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cart in Model)
+        {
+            <tr>
+                <td>@cart.CartId</td>
+                <td>@cart.User.UserName</td> <!-- Access UserName through the User navigation property -->
+                <td>@cart.Product.ProductName</td> <!-- Access ProductName through the Product navigation property -->
+                <td>@cart.Quantity</td>
+                <td>@cart.InsertTime</td>
+                <td>@cart.UpdateTime</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = cart.CartId }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = cart.CartId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = cart.CartId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
